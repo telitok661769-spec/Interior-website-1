@@ -142,7 +142,7 @@
             max-height: 350px;
         }
 
-        /* Categories Section */
+        /* Category Section */
         .category-section {
             max-width: 1200px;
             margin: 2rem auto;
@@ -182,7 +182,7 @@
             font-weight: 600;
         }
 
-        /* Products / Ads Grid */
+        /* Listing Section */
         .listing-section {
             max-width: 1200px;
             margin: 3rem auto;
@@ -272,7 +272,7 @@
             color: #f1c40f;
         }
 
-        /* Contact Section & Map */
+        /* Contact Section */
         .contact-wrapper {
             max-width: 1200px;
             margin: 4rem auto 2rem;
@@ -294,6 +294,14 @@
             margin-bottom: 1rem;
         }
 
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--primary-dark);
+        }
+
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 0.8rem;
@@ -304,7 +312,35 @@
         }
 
         .form-group textarea {
-            height: 100px;
+            height: 90px;
+        }
+
+        /* Auto Location Button Style */
+        .btn-location {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        .btn-location:hover {
+            background-color: #1eb857;
+        }
+
+        .map-status {
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            color: var(--text-gray);
         }
 
         .btn-submit {
@@ -316,9 +352,10 @@
             font-weight: 600;
             cursor: pointer;
             width: 100%;
+            margin-top: 0.5rem;
         }
 
-        /* Map Container */
+        /* Map Box */
         .map-box {
             background: #ffffff;
             padding: 1.5rem;
@@ -492,7 +529,7 @@
         <div class="contact-box">
             <div>
                 <h2>সরাসরি যোগাযোগ করুন</h2>
-                <p style="color: var(--text-gray); margin: 0.8rem 0 1.5rem;">আপনার পছন্দের প্রজেক্টের বাজেট বা ফ্রি কনসাল্টেশনের জন্য ফরমটি পূরণ করুন।</p>
+                <p style="color: var(--text-gray); margin: 0.8rem 0 1.5rem;">আপনার প্রজেক্টের বাজেট বা ফ্রি কনসাল্টেশনের জন্য ফরমটি পূরণ করুন।</p>
                 <p><strong>📍 ঠিকানা:</strong> চট্টগ্রাম, বাংলাদেশ</p>
                 <p style="margin-top: 0.4rem;"><strong>📞 ফোন:</strong> 01719869299</p>
                 <p style="margin-top: 0.4rem;"><strong>✉️ ইমেইল:</strong> mohammadjewel336@gmail.com</p>
@@ -500,16 +537,29 @@
             
             <form action="https://formspree.io/f/xdeevvqy" method="POST">
                 <div class="form-group">
-                    <input type="text" name="name" required placeholder="আপনার নাম">
+                    <label>আপনার নাম</label>
+                    <input type="text" name="name" required placeholder="আপনার নাম লিখুন">
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" required placeholder="ইমেইল ঠিকানা">
+                    <label>ইমেইল ঠিকানা</label>
+                    <input type="email" name="email" required placeholder="ইমেইল দিন">
                 </div>
                 <div class="form-group">
+                    <label>ফোন নম্বর</label>
                     <input type="tel" name="phone" required placeholder="মোবাইল নম্বর">
                 </div>
+                
+                <!-- অটোমেটিক লোকেশন শেয়ারিং বাটন -->
                 <div class="form-group">
-                    <textarea name="message" required placeholder="আপনার প্রজেক্টের বিস্তারিত তথ্য বলুন..."></textarea>
+                    <label>📍 আপনার লাইভ লোকেশন যুক্ত করুন</label>
+                    <button type="button" class="btn-location" onclick="getLocation()">📍 আমার বর্তমান লোকেশন দিন</button>
+                    <div class="map-status" id="location-status">বাটনে চাপ দিয়ে লোকেশন অটোমেটিক যুক্ত করুন</div>
+                    <input type="hidden" name="google_map_location" id="location_input">
+                </div>
+
+                <div class="form-group">
+                    <label>কাজের বিবরণ / বার্তা</label>
+                    <textarea name="message" required placeholder="আপনার মেসেজ লিখুন..."></textarea>
                 </div>
                 <button type="submit" class="btn-submit">বার্তা পাঠান</button>
             </form>
@@ -526,6 +576,35 @@
         <p>© 2026 স্বপ্ন ছোঁয়া ইন্টেরিয়র | চট্টগ্রাম, বাংলাদেশ</p>
     </footer>
 
+    <!-- অটো লোকেশন নেওয়ার JavaScript কোড -->
+    <script>
+        function getLocation() {
+            const statusText = document.getElementById('location-status');
+            const locationInput = document.getElementById('location_input');
+
+            if (navigator.geolocation) {
+                statusText.innerText = "লোকেশন খোঁজা হচ্ছে... অনুগ্রহ করে একটু অপেক্ষা করুন";
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        const mapUrl = `https://www.google.com/maps?q=${lat},${lon}`;
+                        
+                        locationInput.value = mapUrl;
+                        statusText.innerText = "✅ সফলভাবে আপনার লোকেশন যুক্ত করা হয়েছে!";
+                        statusText.style.color = "#25d366";
+                        statusText.style.fontWeight = "bold";
+                    },
+                    (error) => {
+                        statusText.innerText = "❌ লোকেশন নেওয়া সম্ভব হয়নি। অনুগ্রহ করে ফোনের লোকেশন অন করুন।";
+                        statusText.style.color = "#e74c3c";
+                    }
+                );
+            } else {
+                statusText.innerText = "আপনার ডিভাইসে লোকেশন সাপোর্ট করছে না।";
+            }
+        }
+    </script>
+
 </body>
-  </html>
-  
+</html>
