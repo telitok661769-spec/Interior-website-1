@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>স্বপ্ন ছোঁয়া ইন্টেরিয়র | Swapno Chowa Interior</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        :root {
+            --bg-main: #f4f6f9;
+            --card-bg: #ffffff;
+            --primary-dark: #1a1d20;
+            --accent-orange: #ff9800;
+            --text-dark: #2c3e50;
+            --text-gray: #7f8c8d;
+            --border-light: #eef2f5;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .btn-call {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Hero Banner Section */
+        .hero-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hero-banner {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--bg-main);
+            padding: 5px;
+            border-radius: 10px;
+            max-width: 450px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 0.8rem 1rem;
+            width: 100%;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--primary-dark);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+            max-height: 350px;
+        }
+
+        /* Categories Section */
+        .category-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .cat-item {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 12px;
+            background: var(--bg-main);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .cat-item:hover {
+            background: #eef2f7;
+        }
+
+        .cat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cat-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Products / Ads Grid */
+        .listing-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-heading {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-img {
+            position: relative;
+            height: 180px;
+            background-color: #eee;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-cat {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 0.8rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-light);
+            padding-top: 0.8rem;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--accent-orange);
+            font-size: 1.1rem;
+        }
+
+        .rating {
+            font-size: 0.85rem;
+            color: #f1c40f;
+        }
+
+        /* Contact Section & Map */
+        .contact-wrapper {
+            max-width: 1200px;
+            margin: 4rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .contact-box {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-light);
+            background: var(--bg-main);
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 100px;
+        }
+
+        .btn-submit {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Map Container */
+        .map-box {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+
+        .map-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 12px;
+        }
+
+        footer {
+            background: #ffffff;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-gray);
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner, .contact-box {
+                grid-template-columns: 1fr;
+            }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                স্বপ্ন ছোঁয়া <span>ইন্টটেরিয়র</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">হোম</a></li>
+                <li><a href="#services">ক্যাটালগ</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+            </ul>
+            <a href="tel:01719869299" class="btn-call">📞 01719869299</a>
+        </div>
+    </header>
+
+    <div class="hero-section" id="home">
+        <div class="hero-banner">
+            <div class="hero-content">
+                <h1>স্বপ্ন ছোঁয়া ইন্টেরিয়র ক্যাটালগ</h1>
+                <p>আপনার ঘরের স্থান উপযোগী আধুনিক কাস্টম কিচেন, কাঠের ক্যাবিনেট ও আধুনিক ইন্টেরিয়র সার্ভিস প্রজেক্টসমূহ দেখুন।</p>
+                <div class="search-box">
+                    <input type="text" placeholder="ক্যাবিনেট, মডুলার কিচেন খুঁজুন...">
+                    <button>খুঁজুন</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Interior sofa">
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Section -->
+    <div class="category-section">
+        <div class="category-grid">
+            <div class="cat-item">
+                <div class="cat-icon">🪵</div>
+                <div class="cat-title">ক্যাবিনেট</div>
+            </div>
+            <div class="cat-item">
+                <div class="cat-icon">🍽️</div>
+                <div class="cat-title">মডুলার কিচেন</div>
+            </div>
+            <div class="cat-item">
+                <div class="cat-icon">🛋️</div>
+                <div class="cat-title">সোফা ও ফার্নিচার</div>
+            </div>
+            <div class="cat-item">
+                <div class="cat-icon">🛏️</div>
+                <div class="cat-title">বেডরুম ডেকোর</div>
+            </div>
+            <div class="cat-item">
+                <div class="cat-icon">🏢</div>
+                <div class="cat-title">অফিস ডিজাইন</div>
+            </div>
+            <div class="cat-item">
+                <div class="cat-icon">🔧</div>
+                <div class="cat-title">ফিটিং সার্ভিস</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Listing Section -->
+    <div class="listing-section" id="services">
+        <h2 class="section-heading">জনপ্রিয় প্রজেক্ট ও সেবাসমূহ</h2>
+        <div class="cards-grid">
+            
+            <div class="card">
+                <div class="card-img">
+                    <span class="badge-cat">ক্যাবিনেট</span>
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Modern Cabinet">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">মডার্ন কিচেন ক্যাবিনেট</div>
+                    <div class="card-desc">উন্নত মানের কাঠের কাস্টম কিচেন ক্যাবিনেট ডিজাইন ও ফিটিং।</div>
+                    <div class="card-footer">
+                        <div class="price">বাজেট অনুযায়ী</div>
+                        <div class="rating">★★★★★ 5.0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <span class="badge-cat">লিভিং রুম</span>
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=400&q=80" alt="Living Room">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">ড্রয়িং রুম ইন্টেরিয়র</div>
+                    <div class="card-desc">আকর্ষণীয় ওয়াল প্যানেলিং ও ডেকোরেটিভ লাইটিং সলিউশন।</div>
+                    <div class="card-footer">
+                        <div class="price">বাজেট অনুযায়ী</div>
+                        <div class="rating">★★★★★ 4.9</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <span class="badge-cat">বেডরুম</span>
+                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=400&q=80" alt="Bedroom Interior">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">কাস্টম ওয়ারড্রোব ও বেড</div>
+                    <div class="card-desc">স্থান উপযোগী কাস্টমাইজড আলমারি ও সুদৃশ্য মাস্টার বেডরুম সেট।</div>
+                    <div class="card-footer">
+                        <div class="price">বাজেট অনুযায়ী</div>
+                        <div class="rating">★★★★★ 5.0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <span class="badge-cat">অফিস</span>
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80" alt="Office Interior">
+                </div>
+                <div class="card-body">
+                    <div class="card-title">কমার্শিয়াল ও অফিস ডেকোর</div>
+                    <div class="card-desc">অফিস স্পেসের জন্য আধুনিক ওয়ার্কস্টেশন ও ক্যাবিনেট ওয়ার্ক।</div>
+                    <div class="card-footer">
+                        <div class="price">বাজেট অনুযায়ী</div>
+                        <div class="rating">★★★★★ 4.8</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Contact Form & Map Section -->
+    <div class="contact-wrapper" id="contact">
+        <div class="contact-box">
+            <div>
+                <h2>সরাসরি যোগাযোগ করুন</h2>
+                <p style="color: var(--text-gray); margin: 0.8rem 0 1.5rem;">আপনার পছন্দের প্রজেক্টের বাজেট বা ফ্রি কনসাল্টেশনের জন্য ফরমটি পূরণ করুন।</p>
+                <p><strong>📍 ঠিকানা:</strong> চট্টগ্রাম, বাংলাদেশ</p>
+                <p style="margin-top: 0.4rem;"><strong>📞 ফোন:</strong> 01719869299</p>
+                <p style="margin-top: 0.4rem;"><strong>✉️ ইমেইল:</strong> mohammadjewel336@gmail.com</p>
+            </div>
+            
+            <form action="https://formspree.io/f/xdeevvqy" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" required placeholder="আপনার নাম">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" required placeholder="ইমেইল ঠিকানা">
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" required placeholder="মোবাইল নম্বর">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" required placeholder="আপনার প্রজেক্টের বিস্তারিত তথ্য বলুন..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">বার্তা পাঠান</button>
+            </form>
+        </div>
+
+        <!-- Google Maps Section -->
+        <div class="map-box">
+            <h3>📍 গুগল ম্যাপে আমাদের অবস্থান (চট্টগ্রাম)</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118106.7118671801!2d91.73708688463567!3d22.356851025555106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3752ec2ab948c3d5%3A0x4da844ed5740ea3a!2sChattogram!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 স্বপ্ন ছোঁয়া ইন্টেরিয়র | চট্টগ্রাম, বাংলাদেশ</p>
+    </footer>
+
+</body>
+  </html>
+  
